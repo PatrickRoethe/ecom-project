@@ -1,0 +1,14 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Sørger for at siden fyller hele høyden */
+}
+
+main {
+    flex: 1; /* Sørger for at main tar opp mest mulig plass */
+    padding: 20px; /* Gir avstand til navbar og footer */
+}
+
+footer {
+    margin-top: 20px; /* Gir luft mellom main og footer */
+}
