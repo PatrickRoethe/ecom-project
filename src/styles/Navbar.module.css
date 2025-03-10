@@ -1,0 +1,91 @@
+.navbar {
+    background-color: #181818; /* Mørk bakgrunn */
+    color: #f1f1f1; /* Lys tekst */
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Arial", sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Gir en skyggeeffekt */
+}
+
+/* 🛠️ Fikser meny-layout */
+.navList {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+/* 🛠️ Sørger for jevn avstand */
+.navList li {
+    margin: 0 15px;
+}
+
+/* ✨ Link-styling */
+.navbar a {
+    color: #ffffff; /* Hvit tekst */
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+/* 🔥 Hover-effekt */
+.navbar a:hover {
+    color: #f8b400; /* Gull aksentfarge */
+    background-color: rgba(255, 255, 255, 0.1); /* Lett bakgrunn */
+    transform: scale(1.05);
+}
+
+/* 🟡 Fikser aktiv side */
+.navbar a.active {
+    color: #f8b400;
+    border-bottom: 3px solid #f8b400;
+    padding-bottom: 3px;
+}
+
+/* 🛒 Fikser Cart-ikon */
+.cart-icon {
+    font-size: 1.8rem;
+    position: relative;
+    color: #f8b400;
+    display: flex;
+    align-items: center;
+}
+
+/* 🟡 Cart-mengde teller */
+.cart-icon span {
+    background-color: #f8b400;
+    color: #181818;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 4px 8px;
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    box-shadow: 0 0 5px rgba(255, 184, 0, 0.8);
+}
+
+/* 🔥 RESPONSIVITET */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px 15px;
+    }
+
+    .navList {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .navList li {
+        margin: 5px 0;
+    }
+}
