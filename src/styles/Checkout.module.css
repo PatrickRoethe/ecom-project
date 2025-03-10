@@ -1,0 +1,153 @@
+/* ✅ Container for handlekurven */
+.cartContainer {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #222;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    font-family: "Arial", sans-serif;
+    text-align: center;
+}
+
+/* ✅ Handlekurv-listen */
+.cartList {
+    list-style: none;
+    padding: 0;
+}
+
+/* ✅ Hvert produkt i handlekurven */
+.cartItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+/* ✅ Produktbilde */
+.cartImage {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* ✅ Produktinfo */
+.cartInfo {
+    flex: 1;
+    text-align: left;
+    margin-left: 12px;
+}
+
+/* ✅ Produkt-tittel */
+.productTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* ✅ Produkt-pris */
+.productPrice {
+    font-size: 1rem;
+    color: #f8b400;
+}
+
+/* ✅ Knapp for å redusere antall */
+.decreaseButton {
+    background-color: #e6a800;
+    color: black;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.decreaseButton:hover {
+    background-color: #d49a00;
+}
+
+/* ✅ Fjern-knapp (Remove) */
+.removeButton {
+    background-color: red;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* ✅ Lager en hvit X med ::before */
+.removeButton::before {
+    content: "✖";
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* ✅ Totalsum */
+.total {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* 🔥 Checkout-knapp */
+.checkoutButton {
+    background-color: #f8b400;
+    color: black;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.checkoutButton:hover {
+    background-color: #e6a800;
+}
+
+/* 🔙 Back to Store-knapp */
+.backToStoreButton {
+    background-color: #444;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.backToStoreButton:hover {
+    background-color: #555;
+}
+
+
+
+/* ✅ Hvis handlekurven er tom */
+.emptyCart {
+    color: #ccc;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
