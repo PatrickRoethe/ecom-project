@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "../styles/Contact.module.css";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -30,72 +31,86 @@ const Contact = () => {
     }
 
     setErrors(newErrors);
-
-    return Object.keys(newErrors).length === 0; // Returnerer true hvis ingen feil
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (validateForm()) {
       console.log("Form submitted successfully:", formData);
       alert("Form submitted successfully!");
-      setFormData({ fullName: "", subject: "", email: "", message: "" }); // Reset skjema
+      setFormData({ fullName: "", subject: "", email: "", message: "" });
     }
   };
 
   return (
-    <div>
+    <div className={styles.contactContainer}>
+      {" "}
+      {/* ✅ Bruker CSS Module */}
       <h1>Contact Us</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Full Name:</label>
+          <label className={styles.label}>Full Name:</label>
           <input
+            className={styles.input}
             type="text"
             value={formData.fullName}
             onChange={(e) =>
               setFormData({ ...formData, fullName: e.target.value })
             }
           />
-          {errors.fullName && <p style={{ color: "red" }}>{errors.fullName}</p>}
+          {errors.fullName && (
+            <p className={styles.errorMessage}>{errors.fullName}</p>
+          )}
         </div>
 
         <div>
-          <label>Subject:</label>
+          <label className={styles.label}>Subject:</label>
           <input
+            className={styles.input}
             type="text"
             value={formData.subject}
             onChange={(e) =>
               setFormData({ ...formData, subject: e.target.value })
             }
           />
-          {errors.subject && <p style={{ color: "red" }}>{errors.subject}</p>}
+          {errors.subject && (
+            <p className={styles.errorMessage}>{errors.subject}</p>
+          )}
         </div>
 
         <div>
-          <label>Email:</label>
+          <label className={styles.label}>Email:</label>
           <input
+            className={styles.input}
             type="email"
             value={formData.email}
             onChange={(e) =>
               setFormData({ ...formData, email: e.target.value })
             }
           />
-          {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
+          {errors.email && (
+            <p className={styles.errorMessage}>{errors.email}</p>
+          )}
         </div>
 
         <div>
-          <label>Message:</label>
+          <label className={styles.label}>Message:</label>
           <textarea
+            className={styles.input}
             value={formData.message}
             onChange={(e) =>
               setFormData({ ...formData, message: e.target.value })
             }
           />
-          {errors.message && <p style={{ color: "red" }}>{errors.message}</p>}
+          {errors.message && (
+            <p className={styles.errorMessage}>{errors.message}</p>
+          )}
         </div>
 
-        <button type="submit">Submit</button>
+        <button className={styles.submitButton} type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );
