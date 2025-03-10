@@ -1,0 +1,229 @@
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.search {
+    width: 80%;
+    max-width: 400px;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #777;
+    background-color: #222;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+/* ✅ Fikser grid slik at kortene ikke endrer størrelse */
+.productGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+/* ✅ Sikrer at kortene har samme høyde/bredde */
+.productCard {
+    background: #333;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 350px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* ✅ Bildestørrelse er lik for alle produkter */
+.productImage {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* 🔥 Hover-effekt på kortene */
+.productCard:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(255, 184, 0, 0.6);
+}
+
+/* ✅ Pris-styling */
+.priceContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.nowPrice {
+    font-size: 2rem; /* ✅ Gjør "Now:" prisen større */
+    font-weight: bold;
+    color: #f8b400;
+}
+
+.wasPrice {
+    font-size: 1.5rem; /* ✅ Øker "Was:" prisen */
+    text-decoration: line-through;
+    color: red;
+    margin-top: 5px;
+}
+
+/* ✅ Knapp-styling */
+.viewButton, .heroButton {
+    background-color: #f8b400;
+    color: #181818;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.viewButton:hover, .heroButton:hover {
+    background-color: #e6a800;
+    transform: scale(1.1);
+}
+
+/* ✅ Ensartet bredde for enkeltprodukt */
+.singleProduct {
+    display: flex;
+    justify-content: center;
+    max-width: 400px;
+    margin: auto;
+}
+
+/* ✅ Paginering */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.pagination button {
+    background-color: #f8b400;
+    color: #181818;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.pagination button:hover {
+    background-color: #e6a800;
+}
+
+.pagination button:disabled {
+    background-color: #444;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* 🔥 Hero Banner */
+.heroBanner {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 350px; /* 🔥 Låser høyden for konsistent layout */
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 📸 Forbedret fade-effekt på hero-bildet */
+.heroFade {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.heroFade.active {
+    opacity: 1;
+}
+
+/* 🖼️ Hero-bilde */
+.heroImage {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 16/9; /* 🔥 Sikrer at ALLE bildene har lik størrelse */
+    max-height: 300px; /* 🔥 Låser høyden for konsistens */
+    transition: transform 0.5s ease-in-out;
+}
+
+/* 🏆 Liten zoom-effekt for mer "pro feel" */
+.heroFade.active .heroImage {
+    transform: scale(1.05);
+}
+
+/* 📝 Tekst og knapp i Hero Banner */
+.heroContent {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* 🔥 Sørger for at alt innhold holder seg på samme plass */
+    min-height: 150px; /* 🔥 Låser høyden for konsistent plassering */
+}
+
+/* 📢 Øker størrelsen på teksten */
+.heroContent h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* 🔥 Forbedret plassering av knappen */
+.heroButton {
+    display: inline-block;
+    margin-top: auto; /* 🔥 Holder knappen fast nederst */
+    padding: 14px 22px;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+.heroBanner,
+.heroFade,
+.heroImage {
+    border-radius: 0 !important; /* 🚀 Fjerner avrundede kanter */
+    box-shadow: none !important; /* 🚀 Fjerner skygge */
+    padding: 0 !important; /* 🚀 Nullstiller padding */
+    margin: 0 !important; /* 🚀 Nullstiller margin */
+    background: transparent !important; /* 🚀 Nullstiller bakgrunn */
+}
