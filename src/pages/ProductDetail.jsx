@@ -1,14 +1,16 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom"; // ✅ Importerer useNavigate
 import { CartContext } from "../context/CartContext";
+import styles from "../styles/ProductDetail.module.css"; // ✅ Importerer CSS-moduler
 
 function ProductDetail() {
   let { id } = useParams();
+  const navigate = useNavigate(); // ✅ Bruker navigate til "Back to Store"
   const { addToCart } = useContext(CartContext);
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [notification, setNotification] = useState(null); // ✅ Legger til notification state
+  const [notification, setNotification] = useState(null);
 
   useEffect(() => {
     console.log(`Fetching product with ID: ${id}`);
@@ -34,53 +36,68 @@ function ProductDetail() {
 
   const handleAddToCart = () => {
     addToCart(product);
-
-    // ✅ Setter notification som forsvinner etter 2 sekunder
     setNotification(`✅ ${product.title} added to cart!`);
     setTimeout(() => setNotification(null), 2000);
   };
 
-  if (loading) return <p>Loading product...</p>;
-  if (error) return <p>Error: {error}</p>;
-  if (!product) return <p>No product found.</p>;
+  if (loading) return <p className={styles.loading}>Loading product...</p>;
+  if (error) return <p className={styles.error}>Error: {error}</p>;
+  if (!product) return <p className={styles.error}>No product found.</p>;
 
   return (
-    <div>
-      <h1>{product.title}</h1>
+    <div className={styles.productDetail}>
+      <h1 className={styles.title}>{product.title}</h1>
 
-      <img
-        src={product.image?.url || "https://via.placeholder.com/200"}
-        alt={product.image?.alt || product.title}
-        width="200"
-      />
+      <div className={styles.productContainer}>
+        <img
+          src={product.image?.url || "https://via.placeholder.com/200"}
+          alt={product.image?.alt || product.title}
+          className={styles.productImage}
+        />
 
-      <p>{product.description}</p>
-      <p>
-        <strong>Price:</strong> ${product.discountedPrice}
-      </p>
-      {product.price > product.discountedPrice && (
-        <p style={{ color: "red" }}>Discounted from ${product.price}</p>
-      )}
+        <div className={styles.productInfo}>
+          <p className={styles.description}>{product.description}</p>
+          <p className={styles.price}>
+            <strong>Price:</strong> ${product.discountedPrice}
+          </p>
+          {product.price > product.discountedPrice && (
+            <p className={styles.discountedPrice}>
+              Discounted from ${product.price}
+            </p>
+          )}
 
-      {/* 🔥 Viser rating hvis tilgjengelig */}
-      <p>
-        <strong>Rating:</strong> {product.rating} / 5 ⭐
-      </p>
+          <p className={styles.rating}>
+            <strong>Rating:</strong> {product.rating} / 5 ⭐
+          </p>
 
-      <button onClick={handleAddToCart}>Add to Cart</button>
+          {/* 🔥 Knappene er nå under hverandre med styling */}
+          <div className={styles.buttonContainer}>
+            <button
+              className={styles.addToCartButton}
+              onClick={handleAddToCart}
+            >
+              Add to Cart
+            </button>
+            <button
+              className={styles.backToStoreButton}
+              onClick={() => navigate("/")}
+            >
+              Back to Store
+            </button>
+          </div>
 
-      {/* ✅ Viser notification om produktet er lagt til */}
-      {notification && (
-        <p style={{ color: "green", fontWeight: "bold" }}>{notification}</p>
-      )}
+          {notification && (
+            <p className={styles.notification}>{notification}</p>
+          )}
+        </div>
+      </div>
 
-      {/* 🔥 Viser reviews hvis det finnes */}
       {product.reviews?.length > 0 ? (
-        <div>
+        <div className={styles.reviews}>
           <h3>Customer Reviews:</h3>
           <ul>
             {product.reviews.map((review) => (
-              <li key={review.id}>
+              <li key={review.id} className={styles.reviewItem}>
                 <strong>{review.username}</strong> ({review.rating}/5 ⭐)
                 <p>{review.description}</p>
               </li>
@@ -88,7 +105,7 @@ function ProductDetail() {
           </ul>
         </div>
       ) : (
-        <p>No reviews yet.</p>
+        <p className={styles.noReviews}>No reviews yet.</p>
       )}
     </div>
   );
