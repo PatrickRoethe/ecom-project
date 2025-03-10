@@ -1,21 +1,31 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import CartIcon from "../components/CartIcon.jsx";
-import styles from "../styles/Navbar.module.css"; // Import CSS module
+import styles from "../styles/Navbar.module.css";
 
 function Navbar() {
+  const location = useLocation(); // 🔥 Henter aktiv path
+
   return (
     <nav className={styles.navbar}>
       <ul className={styles.navList}>
         <li>
-          <Link to="/">Home</Link>
+          <Link
+            to="/"
+            className={location.pathname === "/" ? styles.active : ""}
+          >
+            Home
+          </Link>
         </li>
+
         <li>
-          <Link to="/checkout">Checkout</Link>
+          <Link
+            to="/contact"
+            className={location.pathname === "/contact" ? styles.active : ""}
+          >
+            Contact
+          </Link>
         </li>
-        <li>
-          <Link to="/contact">Contact</Link>
-        </li>
-        <CartIcon /> {/* Handlekurv-ikon */}
+        <CartIcon />
       </ul>
     </nav>
   );
